@@ -1,4 +1,5 @@
 # QUY TRÌNH TRIỂN KHAI ỨNG DỤNG "DTL TRANSLATE APP"
+Demo sản phẩm: http://3.208.19.184:5000/
 ## Công nghệ sử dụng:
 1. Amazon translate
 2. Amazon amazon polly
