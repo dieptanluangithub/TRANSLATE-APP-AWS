@@ -1,5 +1,4 @@
 # QUY TRÌNH TRIỂN KHAI ỨNG DỤNG "DTL TRANSLATE APP"
-Demo sản phẩm: http://3.208.19.184:5000/
 ## Công nghệ sử dụng:
 1. Amazon translate
 2. Amazon amazon polly
@@ -16,7 +15,7 @@ Demo sản phẩm: http://3.208.19.184:5000/
 2. Tạo tài khoản AWS
 3. Tạo một IAM User và ghi nhớ ghi nhớ aws_access_key_id, aws_secret_access_key và aws_region
 4. Cấu hình AWS CLI để tương tác với AWS Translate và AWS Polly
-  * dsds
+  * 
   *
 6. Cài đặt thư viện boto3
 7. Mở file index.html
