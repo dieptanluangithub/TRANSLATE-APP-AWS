@@ -9,4 +9,4 @@
 1. Tài khoản AWS
 2. IAM user
 3. Thư viện boto3
-4. Cài đặt thư viện giao diện dòng lệnh AWS CLI
+4. Cài đặt thư viện giao diện dòng lệnh AWS CLI MSI bản dành cho Windowns(64-bit): https://awscli.amazonaws.com/AWSCLIV2.msi
