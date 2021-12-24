@@ -1,4 +1,5 @@
 # QUY TRÌNH TRIỂN KHAI ỨNG DỤNG "DTL TRANSLATE APP"
+Demo sản phẩm: 
 ## Công nghệ sử dụng:
 1. Amazon translate
 2. Amazon amazon polly
