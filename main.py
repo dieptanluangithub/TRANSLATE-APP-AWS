@@ -1,4 +1,4 @@
-# import boto3
+#import boto3
 #
 # translate = boto3.client(service_name='translate', region_name='us-east-1', use_ssl=True)
 #
@@ -30,4 +30,4 @@ app = Flask(__name__)
 def test():
     return render_template("index.html")
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000)
+    app.run()
