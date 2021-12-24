@@ -8,4 +8,5 @@
 ## Yêu cầu cần có để cài đặt
 1. Tài khoản AWS
 2. IAM user
-3. 
+3. Thư viện boto3
+4. Cài đặt thư viện giao diện dòng lệnh AWS CLI
