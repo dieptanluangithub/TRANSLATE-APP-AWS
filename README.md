@@ -1,11 +1,15 @@
 # QUY TRÌNH TRIỂN KHAI ỨNG DỤNG "DTL TRANSLATE APP"
 Demo sản phẩm: 
 ## Công nghệ sử dụng:
-1. Amazon translate
-2. Amazon amazon polly
-3. Python 3.8
-4. Bootstrap 4
-5. HTML/Css
+1. Amazon Translate
+2. Amazon Polly
+3. Amazon Textract
+4. Python 3.8
+5. Flask Frameword
+6. Thư viện boto3
+7. Bootstrap 4
+8. HTML/CSS
+9. AWS CLI (AWS Command Line Interface)
 ## Yêu cầu cần có để cài đặt:
 1. Tài khoản AWS
 2. IAM User: ghi nhớ aws_access_key_id, aws_secret_access_key và aws_region
