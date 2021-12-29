@@ -232,12 +232,16 @@
     <div class="row m-2">
         <div class="col-6">
             <button type="submit" class="btn btn-warning" name="translateButton" onclick="doTranslate()">TRANSLATE</button>
-            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeInput()">LISTEN INPUT</button>
+            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeInput()"><i class="fa fa-volume-up text-light"></i></button>
             <button type="submit" class="btn btn-danger" name="clearButton" onclick="clearInputs()">CLEAR</button>
 
         </div>
         <div class="col-6">
-            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeOutput()">LISTEN OUTPUT</button>
+            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeOutput()"><i class="fa fa-volume-up text-light"></i></button>
+            <button class="btn btn-warning" id="copy" onclick="Copytext()"><i class="fa fa-clone text-light"></i></button>
+            <button class="btn btn-success" id="dload"><i class="fa fa-download text-light"></i></button>
+            <input placeholder="Enter file name" id="dload-fn"/><br/><br/>
+
         </div>
     </div>
 </div>
@@ -268,6 +272,26 @@
         var translate = new AWS.Translate({region: AWS.config.region});
         var polly = new AWS.Polly();
 
+        document.getElementById("dload").onclick = function(){
+        var l = document.createElement("a");
+        l.href = "data:text/plain;charset=UTF-8," + document.getElementById("outputText").value;
+        l.setAttribute("download", document.getElementById("dload-fn").value);
+        l.click();
+        }
+        function Copytext() {
+        /* Get the text field */
+         var copyText = document.getElementById("outputText").value;
+
+         /* Select the text field */
+         copyText.select();
+         copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+         /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+         /* Alert the copied text */
+         alert("Copied the text: " + copyText.value);
+         }
         function doTranslate() {
             var inputText = document.getElementById('inputText').value;
             if (!inputText) {
