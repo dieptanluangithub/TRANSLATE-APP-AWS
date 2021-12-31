@@ -25,7 +25,7 @@
           "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
         var postHtml = "</body></html>";
         var html =
-          preHtml + document.getElementById('inputText').innerHTML + postHtml;
+          preHtml + document.getElementById('inputText').value + postHtml;
 
         var blob = new Blob(["\ufeff", html], {
           type: "application/msword",
@@ -33,7 +33,33 @@
         var url =
           "data:application/vnd.ms-word;charset=utf-8," +
           encodeURIComponent(html);
-        filename = filename ? filename + ".doc" : "DTL translate.doc";
+        filename = filename ? filename + ".doc" : "DTL Input.doc";
+        var downloadLink = document.createElement("a");
+        document.body.appendChild(downloadLink);
+        if (navigator.msSaveOrOpenBlob) {
+          navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+          downloadLink.href = url;
+          downloadLink.download = filename;
+          downloadLink.click();
+        }
+        document.body.removeChild(downloadLink);
+      }
+
+      function Export2Word1(filename = "") {
+        var preHtml =
+          "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+        var postHtml = "</body></html>";
+        var html =
+          preHtml + document.getElementById('outputText').value + postHtml;
+
+        var blob = new Blob(["\ufeff", html], {
+          type: "application/msword",
+        });
+        var url =
+          "data:application/vnd.ms-word;charset=utf-8," +
+          encodeURIComponent(html);
+        filename = filename ? filename + ".doc" : "DTL Output.doc";
         var downloadLink = document.createElement("a");
         document.body.appendChild(downloadLink);
         if (navigator.msSaveOrOpenBlob) {
@@ -236,8 +262,7 @@
             <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeInput()"><i class="fa fa-volume-up text-light"></i></button>
             <button type="submit" class="btn btn-danger" name="clearButton" onclick="clearInputs()">CLEAR</button>
             <button class="btn btn-success" id="upload" onclick="loadFileAsText()"><i class="fa fa-upload text-light"></i></button>
-            <button class="btn btn-success" id="iload"><i class="fa fa-download text-light"></i></button>
-            <input placeholder="Enter file name" id="iload-fn"/><br/><br/>
+            <button class="btn btn-danger" id="test" onclick="Export2Word()"><i class="fa fa-download text-light"></i></button>
             <form
             method="POST"
             ,
@@ -249,16 +274,15 @@
                 <input type="file" , name="filename", id="filename" class="filebutton" />
                 <button type="submit" class="btn btn-primary">EXTRACT TEXT</button>
 <!--                <button class="btn btn-success" onclick="Export2Word();">DOWNLOAD FILE</button>-->
-    </form>
 
+            </form>
 
         </div>
+
         <div class="col-6">
             <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeOutput()"><i class="fa fa-volume-up text-light"></i></button>
             <button class="btn btn-warning" id="copyToClipboard-a" onclick="copyToClipboard()"><i class="fa fa-clone text-light"></i></button>
-            <button class="btn btn-success" id="dload"><i class="fa fa-download text-light"></i></button>
-            <input placeholder="Enter file name" id="dload-fn"/><br/><br/>
-
+            <button class="btn btn-danger" id="test1" onclick="Export2Word1()"><i class="fa fa-download text-light"></i></button>
         </div>
     </div>
 </div>
@@ -278,12 +302,6 @@
         var l = document.createElement("a");
         l.href = "data:text/plain;charset=UTF-8," + document.getElementById("outputText").value;
         l.setAttribute("output_download", document.getElementById("dload-fn").value);
-        l.click();
-        }
-        document.getElementById("iload").onclick = function(){
-        var l = document.createElement("a");
-        l.href = "data:text/plain;charset=UTF-8," + document.getElementById("inputText").value;
-        l.setAttribute("input_download", document.getElementById("iload-fn").value);
         l.click();
         }
 
