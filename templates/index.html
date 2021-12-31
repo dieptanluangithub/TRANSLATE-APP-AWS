@@ -55,6 +55,7 @@
                 <div class="col-9">
                     <button type="button" class="btn btn-sm btn-success">Source Language Code</button>
                     <select class="form-select"  id="sourceLanguageCodeDropdown">
+                        <option value="auto">Auto</option>
                     <option value="af">Afrikaans</option>
                     <option value="sq">Albanian</option>
                     <option value="am">Amharic</option>
@@ -430,7 +431,7 @@
         function clearInputs() {
             document.getElementById('inputText').value = "";
             document.getElementById('outputText').value = "";
-            document.getElementById("sourceLanguageCodeDropdown").value = "en";
+            document.getElementById("sourceLanguageCodeDropdown").value = "auto";
             document.getElementById("targetLanguageCodeDropdown").value = "vi";
             document.getElementById("filename").value = "";
         }
