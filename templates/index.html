@@ -20,12 +20,12 @@
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1048.0.min.js"></script>
 </head>
 <script>
-      function Export2Word(element, filename = "") {
+      function Export2Word(filename = "") {
         var preHtml =
           "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
         var postHtml = "</body></html>";
         var html =
-          preHtml + document.getElementById(element).innerHTML + postHtml;
+          preHtml + document.getElementById('inputText').innerHTML + postHtml;
 
         var blob = new Blob(["\ufeff", html], {
           type: "application/msword",
@@ -231,43 +231,44 @@
     </div>
     <div class="row m-2">
         <div class="col-6">
-            <button type="submit" class="btn btn-warning" name="translateButton" onclick="doTranslate()">TRANSLATE</button>
+            <button type="submit" class="btn btn-warning" name="translateButton" id="translate" onclick="doTranslate()">TRANSLATE</button>
             <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeInput()"><i class="fa fa-volume-up text-light"></i></button>
             <button type="submit" class="btn btn-danger" name="clearButton" onclick="clearInputs()">CLEAR</button>
-
-        </div>
-        <div class="col-6">
-            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeOutput()"><i class="fa fa-volume-up text-light"></i></button>
-            <button class="btn btn-warning" id="copy" onclick="Copytext()"><i class="fa fa-clone text-light"></i></button>
-            <button class="btn btn-success" id="dload"><i class="fa fa-download text-light"></i></button>
-            <input placeholder="Enter file name" id="dload-fn"/><br/><br/>
-
-        </div>
-    </div>
-</div>
-<div class="main justify-content-between m-3" style="z-index: 1">
-    <div class="textlabel">
-        <div class="text" id="text"></div>
-    </div>
-    <form
+            <button class="btn btn-success" id="upload" onclick="loadFileAsText()"><i class="fa fa-upload text-light"></i></button>
+            <button class="btn btn-success" id="iload"><i class="fa fa-download text-light"></i></button>
+            <input placeholder="Enter file name" id="iload-fn"/><br/><br/>
+            <form
             method="POST"
             ,
             action="/extracttext"
             ,
             enctype="multipart/form-data"
             class="main__menu--tool-form1"
-    >
-        <input type="file" , name="filename" class="filebutton" />
-        <button type="submit" class="btn btn-primary">EXTRACT TEXT</button>
-        <button class="btn btn-success" onclick="Export2Word('text');">DOWNLOAD FILE</button>
+             >
+                <input type="file" , name="filename", id="filename" class="filebutton" />
+                <button type="submit" class="btn btn-primary">EXTRACT TEXT</button>
+<!--                <button class="btn btn-success" onclick="Export2Word();">DOWNLOAD FILE</button>-->
     </form>
+
+
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary" name="synthesizeButton" onclick="doSynthesizeOutput()"><i class="fa fa-volume-up text-light"></i></button>
+            <button class="btn btn-warning" id="copyToClipboard-a" onclick="copyToClipboard()"><i class="fa fa-clone text-light"></i></button>
+            <button class="btn btn-success" id="dload"><i class="fa fa-download text-light"></i></button>
+            <input placeholder="Enter file name" id="dload-fn"/><br/><br/>
+
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
         // set the focus to the input box
         document.getElementById("inputText").focus();
 
 
         AWS.config.region = 'us-east-1'; // Region
-        AWS.config.credentials = new AWS.Credentials("ASIAQTOOB77BLFQDDLF7", "tpMq7GQ5f3swcvJKf9lxdd7acOUTTzSTq7i8JFRH", "FwoGZXIvYXdzEOr//////////wEaDEtqabDoO33/tSwXYiLPAdjFo8NrQ5NygO1ylgI3RkIOfALkGWRX5e6/K8H4sneuOrQa/RGY+ZeJruXOzBRiY2UlE53BR8ME0r3HwyREWfwJZiyinmIWkY3xCdqJy5AMsAQ1MX5vs1tX5md5fJj2c6TyTBsVQpX2EGHzoQRDvcxU+1J6HbEYnvOY83g4DnUH4bmbvU1/8ZnuhVGat7LQyswJKjPMSGAnRw0OsMEJmbiLyoSbyi4dQ9/vJOiNdFuDIqGOnXw1zXuF61w5ijxnw4OeDz3s5Br/LAKNoCoEBCiYt7COBjItXWDTULIIvXGi/Y3xWMTfH30gS3PLFVlUyWNA7igwgGp06CUlG3wqMAm0rv6h");
+        AWS.config.credentials = new AWS.Credentials("ASIAQTOOB77BECKAZCW4","xgBc28bfyNLm37zzYY1uSNsXtiKVVG7PsttnNr5v","FwoGZXIvYXdzEBYaDFV5nSvotgcS4L51BCLPAdE70b43Nlu6kP9k+u+BeJVbSqrHYo7PlG+ozl7gM4XOsa9Szw2kp8lz617nHJvK1cnLrpqspO6gLkSE5ygQeBUI1PJd0woDBxXzBaQu9T2W8eG8OOcXvz5TY4mCvIVx2dJIRFbdx6b3mVj2FhnFNTaIRZQSuhLTJrFsN2+TL6Lrx5Yq4oKEmSqBhPDeV7E2mvtsXwNjutRMO4dWLc3/vaF/2lWs1HJ0XVIkah+G0Ds7A+P4ORoxj7OugJMrH+78YUHamkDUEcJWHx95tYECRCianrqOBjIt9Fq4Bgd7E5vYnXeA+VO++Ph6Uy2Lu92mSchwFILOlDntZ6t1V4Df39jjPCu+");
 
         var translate = new AWS.Translate({region: AWS.config.region});
         var polly = new AWS.Polly();
@@ -275,27 +276,39 @@
         document.getElementById("dload").onclick = function(){
         var l = document.createElement("a");
         l.href = "data:text/plain;charset=UTF-8," + document.getElementById("outputText").value;
-        l.setAttribute("download", document.getElementById("dload-fn").value);
+        l.setAttribute("output_download", document.getElementById("dload-fn").value);
         l.click();
         }
-        function Copytext() {
-        /* Get the text field */
-         var copyText = document.getElementById("outputText").value;
+        document.getElementById("iload").onclick = function(){
+        var l = document.createElement("a");
+        l.href = "data:text/plain;charset=UTF-8," + document.getElementById("inputText").value;
+        l.setAttribute("input_download", document.getElementById("iload-fn").value);
+        l.click();
+        }
 
-         /* Select the text field */
-         copyText.select();
-         copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        function loadFileAsText()
+        {
+        var fileToLoad = document.getElementById("filename").files[0];
 
-         /* Copy the text inside the text field */
-        navigator.clipboard.writeText(copyText.value);
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent)
+            {
+            var textFromFileLoaded = fileLoadedEvent.target.result;
+            document.getElementById("inputText").value = textFromFileLoaded;
+            };
+            fileReader.readAsText(fileToLoad, "UTF-8");
+        }
 
-         /* Alert the copied text */
-         alert("Copied the text: " + copyText.value);
-         }
+        document.getElementById('inputText').onkeypress=function(e){
+        if(e.keyCode==13){
+            document.getElementById('translate').click();
+            }
+        }
+
         function doTranslate() {
             var inputText = document.getElementById('inputText').value;
             if (!inputText) {
-                alert("Input text cannot be empty.");
+                alert("Vui lòng nhập văn bản bạn muốn dịch");
                 exit();
             }
 
@@ -419,6 +432,7 @@
             document.getElementById('outputText').value = "";
             document.getElementById("sourceLanguageCodeDropdown").value = "en";
             document.getElementById("targetLanguageCodeDropdown").value = "vi";
+            document.getElementById("filename").value = "";
         }
         function swapText() {
             let inputText = document.getElementById('inputText').value;
