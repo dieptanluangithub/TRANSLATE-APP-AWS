@@ -1,0 +1,67 @@
+Tài khoản thường
+AKIARXPVFERQOG7RA66J
+9+mUkXIQw+DSYvPsveSG2i+biUvtaSNqGkKFBnep
+us-east-1
+
+aws translate translate-text ^
+            --region us-east-1 ^
+            --source-language-code "en" ^
+            --target-language-code "es" ^
+            --text "hello, world"
+
+Công nghệ sử dụng:
+1. Amazon translate
+2. Amazon amazon polly
+3. Python 3.8
+4. Bootstrap 4
+5. HTML/Css
+Các bước để viết một ứng dụng demo AWS Translate:
+1. Tạo tài khoản AWS
+2. Tạo Create an IAM User. Và ghi nhớ
+3.
+
+
+tài khoản sinh viên
+aws configure
+ASIAQTOOB77BICRRLJOD
+kcjFMhVykTO9OU/cCc/1HaDEp/+xivgHFFSzVdZ+
+us-east-1
+
+from flask import render_template, Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def test():
+    return render_template("index.html")
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',port=5000)
+
+#meomeo
+#import boto3
+#
+# translate = boto3.client(service_name='translate', region_name='us-east-1', use_ssl=True)
+#
+# test = input("Mời bạn nhập: ")
+# lang_flag_pairs = [("he", "🇮🇱"), ("fr", "🇫🇷"), ("de", "🇩🇪"),
+#                    ("es", "🇪🇸"), ("pt", "🇵🇹"), ("zh", "🇨🇳"),
+#                    ("ja", "🇯🇵"), ("ru", "🇷🇺"), ("it", "🇮🇹"),
+#                    ("zh-TW", "🇹🇼"), ("tr", "🇹🇷"), ("cs", "🇨🇿"), ("th", "Thái Lan"), ("vi", "Việt Nam")]
+# for lang, flag in lang_flag_pairs:
+#     print(flag)
+#     print(translate.translate_text(
+#         Text=test,
+#         SourceLanguageCode="en",
+#         TargetLanguageCode=lang
+#     )['TranslatedText'])
+#
+#
+# result = translate.translate_text(Text=test,
+#             SourceLanguageCode="en", TargetLanguageCode="vi")
+# print('TranslatedText: ' + result.get('TranslatedText'))
+# print('SourceLanguageCode: ' + result.get('SourceLanguageCode'))
+# print('TargetLanguageCode: ' + result.get('TargetLanguageCode'))
+
+
+ASIAQTOOB77BEUMJYDS7
+KEOyVPv582v+QcExM3y0g6fH7UKOY89FHH3wi09a
