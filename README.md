@@ -25,5 +25,21 @@ Demo sản phẩm:
 * aws_session_token
 * aws_region
 4. Mở file main.py và file index.html để cấu hình thông tin tài khoản AWS của bạn
-5. Chạy file main.py để xem kết quả. 
+5. Chạy file main.py để xem kết quả.
+![image](https://user-images.githubusercontent.com/82451887/187751901-90ad34c9-f6d6-49de-8922-530e0aa3700f.png)
+![image](https://user-images.githubusercontent.com/82451887/187751928-5d612af5-7a80-410c-b995-af7f743c878c.png)
+![image](https://user-images.githubusercontent.com/82451887/187751954-9439fb83-c13f-40bd-bdb3-4c9d1f25b3f1.png)
+- Chuyển file hình ảnh thành văn bản.
++ Đầu vào:
+![image](https://user-images.githubusercontent.com/82451887/187752064-e16b1fc7-0560-4c22-8133-aaf2a18627cd.png)
+
++ Đầu ra:
+ ![image](https://user-images.githubusercontent.com/82451887/187752043-71d4d4d6-3ed7-45dd-873e-a4ba9b2d3311.png)
+
++ Download file vừa chuyển từ ảnh sang văn bản
+ ![image](https://user-images.githubusercontent.com/82451887/187752179-e1e35bab-7594-422f-9f36-626fa433da97.png)
+![image](https://user-images.githubusercontent.com/82451887/187752192-33bcb01f-d4a0-4a51-aa6f-c5b7e9353e69.png)
+
+ 
+
 
